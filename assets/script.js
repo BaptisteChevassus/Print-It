@@ -4,6 +4,8 @@ const bannerText = document.querySelector("#banner p");
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
 
+let currentIndex = 0;
+
 const slides = [
 	{
 		"image":"slide1.jpg",
@@ -29,10 +31,14 @@ for (let i = 0; i < slides.length; i++) {
     dotsContainer.appendChild(dot);
 }
 
-arrowLeft.addEventListener("click", function() {
-    console.log("clic gauche");
+arrowRight.addEventListener("click", function() {
+    currentIndex++;
+    bannerImg.src = `./assets/images/slideshow/${slides[currentIndex].image}`;
+    bannerText.innerHTML = slides[currentIndex].tagLine;
 });
 
-arrowRight.addEventListener("click", function() {
-    console.log("clic droit");
+arrowLeft.addEventListener("click", function() {
+    currentIndex--;
+    bannerImg.src = `./assets/images/slideshow/${slides[currentIndex].image}`;
+    bannerText.innerHTML = slides[currentIndex].tagLine;
 });
