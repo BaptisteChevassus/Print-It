@@ -124,9 +124,11 @@ header {
 /* Code CSS en prévision de l'ajout d'un carousel pour la bannière */
 /* Gestion des fleches du carrousel */
 #banner .arrow {
-	position: absolute;
-	position: absolute;
-	cursor: pointer;
+	 position: absolute;
+   	 background: none;
+   	 border: none;
+   	 padding: 0;
+	 cursor: pointer;
 }
 #banner .arrow_left {
 	left: 10px;
@@ -148,6 +150,7 @@ header {
 	border: 3px solid #fff;
 	border-radius: 100%;
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);;
+	cursor: pointer;
 }
 .dot_selected {
 	background-color: #fff;
