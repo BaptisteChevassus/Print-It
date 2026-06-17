@@ -44,7 +44,6 @@ for (let i = 0; i < slides.length; i++) {
     dot.classList.add("dot");
     if (i === 0) dot.classList.add("dot_selected");
     // Clic sur un dot : navigation directe vers la slide correspondante
-    // stopPropagation empêche l'événement de remonter jusqu'au listener de la banner
     dot.addEventListener("click", function(e) {
         e.stopPropagation();
         goToSlide(i);
@@ -65,12 +64,13 @@ function goToSlide(index) {
 }
 
 // Délégation d'événement sur la banner : un seul listener pour les deux flèches
+// Le modulo gère le bouclage automatiquement, sans condition explicite
 banner.addEventListener("click", function(e) {
     if (e.target.closest(".arrow_right")) {
-        const newIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
+        const newIndex = (currentIndex + 1) % slides.length;
         goToSlide(newIndex);
     } else if (e.target.closest(".arrow_left")) {
-        const newIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+        const newIndex = (currentIndex - 1 + slides.length) % slides.length;
         goToSlide(newIndex);
     }
 });
